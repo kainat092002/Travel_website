@@ -8,7 +8,7 @@ type ButtonProps = {
     full?: boolean; 
 }
 
-const Button = ({type, title, icon, variant, full}: ButtonProps) => {
+const Button = ({type, title, icon, variant}: ButtonProps) => {
   return (
     <button
     className={`flexCenter gap-3 rounded-full border ${variant} $ {full && 'w-full}`}
