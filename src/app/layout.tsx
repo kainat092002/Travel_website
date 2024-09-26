@@ -1,41 +1,34 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+"use client"; // Make this a client component
+
+import React from 'react';
+import localFont from 'next/font/local';
+import './globals.css';
+import Footer from './components/footer';
+import SidebarClient from './components/SidebarClient'; // Import SidebarClient
 
 // Load the local fonts
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+  src: './fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
 });
 
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+  src: './fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900',
 });
 
-// Metadata for the app
-export const metadata: Metadata = {
-  title: "Travel",
-  description: "Travel UI/UX App for Camping",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// RootLayout
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
-        <Navbar />
-        <main className="relative overflow-hidden">
-          {children}
-        </main>
-        <Footer />
+      <body className="relative">
+        <SidebarClient>
+          
+          <main className="relative overflow-hidden">{children}</main>
+          <Footer />
+        </SidebarClient>
       </body>
     </html>
   );
